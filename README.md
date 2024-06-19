@@ -1,2 +1,4 @@
-# game02
+# COOKing!
 A simple cooking game made with C# + Unity
+
+## Features
