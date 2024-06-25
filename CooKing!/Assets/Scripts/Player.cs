@@ -33,6 +33,13 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 
     private void Start() {
         inputManager.OnInteractAction += InputManager_OnInteractAction;
+        inputManager.OnInteractAlternateAction += InputManager_OnInteractAlternateAction;
+    }
+
+    private void InputManager_OnInteractAlternateAction(object sender, EventArgs e) {
+        if (selectedCounter != null) {
+            selectedCounter.InteractAlternate(this);
+        }
     }
 
     private void InputManager_OnInteractAction(object sender, System.EventArgs e) {
@@ -57,20 +64,20 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 
         float moveDistance = moveSpeed * Time.deltaTime;
         float playerHeight = 2f;
-        float playerRadius = 0.7f;
+        float playerRadius = 0.6f;
 
         bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, movDir, moveDistance);
 
         if (!canMove) {
             Vector3 movDirX = new Vector3(movDir.x, 0, 0).normalized;
-            canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, movDirX, moveDistance);
+            canMove = movDir.x != 0 && !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, movDirX, moveDistance);
 
             //Checa para ver se é possível se mover apenas no eixo X
             if (canMove) {
                 movDir = movDirX;
             } else {
                 Vector3 movDirZ = new Vector3(0, 0, movDir.z).normalized;
-                canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, movDirZ, moveDistance);
+                canMove = movDir.z != 0 && !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, movDirZ, moveDistance);
 
                 //Checa para ver se é possível se mover apenas no eixo Y
                 if (canMove) {
