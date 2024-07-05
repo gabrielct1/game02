@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ab0ccadad5f59942a315e831b4157d5, type: 3}
-  m_Name: MeatPattyCooked-MeatPattyBurned
+  m_Script: {fileID: 11500000, guid: 771191c0578f5604398794f29c9d3d13, type: 3}
+  m_Name: Plate
   m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: bd1f1a86c3e02214eb31cd4a82dc3cd5, type: 2}
-  output: {fileID: 11400000, guid: 94115e5234c88044bbeacb59fc6589e4, type: 2}
-  burningTimerMax: 5
+  prefab: {fileID: 8288738889781951379, guid: c3f6ec3cdf61ffb4e90960a93ea4c454, type: 3}
+  sprite: {fileID: 21300000, guid: 3928afb5321bb3d489bbd4ac581b29a2, type: 3}
+  objectName: Plate
